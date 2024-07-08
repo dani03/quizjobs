@@ -1,0 +1,435 @@
+openapi: 3.0.3
+info:
+  title: Job'IN Quiz
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:3002'
+paths:
+  /api/v1/test:
+    get:
+      summary: ''
+      operationId: getApiV1Test
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "tu es connecté à l'api quiz dev"
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/auth/register:
+    post:
+      summary: 'POST api/v1/auth/register'
+      operationId: pOSTApiv1authregister
+      description: "permet de s'enregistrer"
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lastname:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: xrdxiau
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: bsplwirvzghjzvqpfu
+                password:
+                  type: string
+                  description: ''
+                  example: ullam
+                role_id:
+                  type: string
+                  description: ''
+                  example: '3'
+                  enum:
+                    - '2'
+                    - '3'
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: nreichert@example.com
+              required:
+                - lastname
+                - name
+                - password
+                - password_confirmation
+                - role_id
+                - email
+      security: []
+  /api/v1/auth/login:
+    post:
+      summary: ''
+      operationId: postApiV1AuthLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: mills.dagmar@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: veniam
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/profil:
+    get:
+      summary: ''
+      operationId: getApiV1Profil
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/update/profil:
+    put:
+      summary: ''
+      operationId: putApiV1UpdateProfil
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: jennifer.predovic@example.com
+                name:
+                  type: string
+                  description: ''
+                  example: dolorem
+                lastname:
+                  type: string
+                  description: ''
+                  example: qui
+              required:
+                - email
+                - name
+                - lastname
+      security: []
+  /api/v1/update/password:
+    put:
+      summary: ''
+      operationId: putApiV1UpdatePassword
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current_password:
+                  type: string
+                  description: ''
+                  example: quod
+                password:
+                  type: string
+                  description: ''
+                  example: rem
+              required:
+                - current_password
+                - password
+      security: []
+  /api/v1/logout:
+    post:
+      summary: ''
+      operationId: postApiV1Logout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/delete/profil:
+    delete:
+      summary: ''
+      operationId: deleteApiV1DeleteProfil
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/user/quiz:
+    get:
+      summary: ''
+      operationId: getApiV1UserQuiz
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/entreprise/quiz:
+    get:
+      summary: ''
+      operationId: getApiV1EntrepriseQuiz
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/level/store:
+    post:
+      summary: ''
+      operationId: postApiV1LevelStore
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: et
+                points:
+                  type: integer
+                  description: ''
+                  example: 3
+                slug:
+                  type: string
+                  description: ''
+                  example: repellendus
+              required:
+                - name
+      security: []
+  /api/v1/levels:
+    get:
+      summary: 'récupération de tous les levels(niveaux) récupére une collection de données et pas une seule donnée'
+      operationId: rcuprationDeTousLesLevelsniveauxRcupreUneCollectionDeDonnesEtPasUneSeuleDonne
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/level/destroy:
+    delete:
+      summary: ''
+      operationId: deleteApiV1LevelDestroy
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: ''
+                  example: sit
+              required:
+                - slug
+      security: []
+  /api/v1/domains:
+    get:
+      summary: ''
+      operationId: getApiV1Domains
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/domain/store:
+    post:
+      summary: ''
+      operationId: postApiV1DomainStore
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: rem
+              required:
+                - name
+      security: []
+  '/api/v1/domain/delete/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiV1DomainDeleteId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the delete.'
+        example: ullam
+        required: true
+        schema:
+          type: string
+  /api/v1/question/store:
+    post:
+      summary: ''
+      operationId: postApiV1QuestionStore
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 150 characters.'
+                  example: lpltvzjffuzosnoojyafljpi
+                domain_id:
+                  type: integer
+                  description: ''
+                  example: 7
+                level_id:
+                  type: integer
+                  description: ''
+                  example: 14
+                points:
+                  type: integer
+                  description: ''
+                  example: 15
+                answers:
+                  type: object
+                  description: 'Must have at least 2 items.'
+                  example: []
+                  properties: {  }
+              required:
+                - title
+                - domain_id
+                - level_id
+                - answers
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
